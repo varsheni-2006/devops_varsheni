@@ -8,6 +8,12 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // basic email validation: must contain '@'
+    if (!form.email || !form.email.includes('@')) {
+      alert('Please enter a valid email containing "@"');
+      return;
+    }
  
     if (form.pass !== form.confirm) {
       alert('Password doent match');
@@ -18,13 +24,11 @@ function App() {
       alert('Required Min 8 chars');
       return;
     }
-if(form.email != "@"){
-  alert("email format is wrong!!")
-  return;
- }
+
     const arr = [123, 234, 345];
 
-    if ("123" !== form.otp) {
+    // accept OTP that matches one of the allowed values
+    if (!arr.map(String).includes(form.otp)) {
       console.log(typeof(form.otp));
       alert('Not match otp')
       return;
